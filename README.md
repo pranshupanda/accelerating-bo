@@ -1,2 +1,2 @@
-# Discrete-Optimization
-Combinatorial and Discrete Bayesian Optimization
+# Acquisition-Acceleration
+Accelerating acquisition function optimization in discrete space 
