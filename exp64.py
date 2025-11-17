@@ -10,6 +10,8 @@ from botorch.models.kernels.categorical import CategoricalKernel
 from botorch.models.transforms.outcome import Standardize
 from botorch.acquisition import qLogExpectedImprovement
 from gpytorch.mlls.exact_marginal_log_likelihood import ExactMarginalLogLikelihood
+from botorch.optim.optimize import optimize_acqf_discrete_local_search
+
 
 # max_iters - max BO iterations 
 # retrain_every - number of iterations to refit GP after
@@ -27,6 +29,7 @@ CONFIG = {
         "BCA": {"r": 0.9, "beta": 3.095, "max_iters": 200},
         "PSO": {"n_particles": 32, "w": 0.7, "c1": 1.5, "c2": 1.5, "max_iters": 200},
         "Firefly": {"n_fireflies": 32, "alpha": 0.2, "beta0": 1.0, "gamma": 1.0, "max_iters": 200},
+        "LocalSearch": {"max_iters": 1},
     },
 }
 
@@ -161,6 +164,27 @@ class Firefly(OptBase):
         print(f"    [Firefly] Acquisition optimizer run time: {t_opt:.2f}s")  
         return X[idx].unsqueeze(0), vals[idx].item()
 
+class LocalSearch(OptBase):
+    def __init__(self, dim, acq_func, max_iters):
+        super().__init__(dim, acq_func, max_iters)
+
+    def optimize(self):
+        # FIX: 1D tensor, not 2D
+        discrete_choices = torch.tensor([0.0, 1.0], device=device)
+
+        t_opt_start = time.time()
+        X_opt, acq_val = optimize_acqf_discrete_local_search(
+            acq_function=self.acq_func,
+            discrete_choices=[discrete_choices for _ in range(self.dim)],
+            q=1,
+            num_restarts=20,
+            raw_samples=4096,
+            max_batch_size=2048,
+        )
+        t_opt = time.time() - t_opt_start
+        print(f"    [LocalSearch] Acquisition optimizer run time: {t_opt:.2f}s")
+        return X_opt, acq_val.item()
+        
 class BORunner:
     def __init__(self, dim, use_categorical, opt_class):
         self.dim = dim
@@ -209,7 +233,7 @@ class BORunner:
 
 def run_all():
     results = []
-    optimizers = {"BCA": BCA, "PSO": PSO, "Firefly": Firefly}
+    optimizers = {"BCA": BCA, "PSO": PSO, "Firefly": Firefly, "LocalSearch": LocalSearch}
     start_total = time.time()
     filename = "bo_results_checkpoint.csv"
 
