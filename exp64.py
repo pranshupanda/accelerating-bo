@@ -219,7 +219,7 @@ def run_all():
 
     for name, opt_cls in optimizers.items():
         for d in CONFIG["dims"]:
-            for use_cat in [False, True]:
+            for use_cat in [True]:
                 vals = []
                 t_start = time.time()
                 kernel_name = "Categorical" if use_cat else "Default"
