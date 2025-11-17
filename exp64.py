@@ -169,7 +169,6 @@ class LocalSearch(OptBase):
         super().__init__(dim, acq_func, max_iters)
 
     def optimize(self):
-        # FIX: 1D tensor, not 2D
         discrete_choices = torch.tensor([0.0, 1.0], device=device)
 
         t_opt_start = time.time()
