@@ -27,6 +27,27 @@ Activate your environment using the following command.
 ```bash
 conda activate gpuenv
 ```
+To reproduce Bayesian Optimization on LABS for Discrete Local Search, BCA, Firefly and Particle Swarm Optimization run the following command. 
+```bash
+# This will likely take close to ~16 hours to populate the CSV 
+python3 batch64.py
+```
+Followed by 
+```bash
+# This will fetch your results from the CSV created and produce the graph with values detailed in Table 2 of the report
+python3 graph5.py
+```
+
+To reproduce Direct Optimization on LABS for BCA, Firefly and Particle Swarm Optimization run the following command. 
+```bash
+# This will likely take close to ~16 hours to populate the CSV 
+python3 direct.py
+```
+Once again, followed by 
+```bash
+# This will fetch your results from the CSV created and produce the graph with values detailed in Table 1 of the report
+python3 graph5.py
+```
 
 ## Introduction
 
