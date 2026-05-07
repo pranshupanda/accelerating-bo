@@ -38,25 +38,20 @@ reproduce the associated results. At UMN, if you do use MSI, then train.sh will 
 3. To reproduce Bayesian Optimization on LABS for Discrete Local Search, BCA, Firefly and Particle Swarm Optimization run the following command. 
      ```bash
      # This will likely take close to ~16 hours to populate the CSV and print a version of Table 2 from the report to your terminal window after completion.
-     # Note: The formatting will be slightly different with labels like BCA-10 implying 10 dimensional LABS problem with BCA optimizer
+     # Note: The formatting will be slightly different with labels like BCA-10 implying 10 dimensional LABS problem with BCA optimizer instead of the BEST<dim> format in the paper. 
      python3 batch64.py
      ```
    Optionally, if you prefer a graph to illustrate the differences please run the following command. 
     ```bash
-    # This will fetch your results from the CSV created and produce the graph with values detailed in Table 2 of the report
+    # This will fetch your results from the CSV created and produce the graph with values detailed in Table 2 of the report, and store them in folder plots
     # This can only be done once the results CSV file is populated post-BO. 
-    python3 graph5.py
+    python3 graph.py
     ```
 
 4. To reproduce Direct Optimization on LABS for BCA, Firefly and Particle Swarm Optimization run the following command. 
     ```bash
-    # This will likely take close to ~16 hours to populate the CSV 
+    # This will likely take close to ~8.5 hours to populate the CSV 
     python3 direct.py
-    ```
-    Once again, followed by 
-    ```bash
-    # This will fetch your results from the CSV created and produce the graph with values detailed in Table 1 of the report
-    python3 graph5.py
     ```
 5. To view an illustrative example of the working of the CHM algorithm, please run the following command.
     ```bash
