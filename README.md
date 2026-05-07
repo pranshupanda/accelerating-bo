@@ -1,10 +1,10 @@
-# Sample-Efficient Sequence Design via LLM-Based Bayesian Optimization
+# Accelerating Bayesian Optimization for Protein Design via Evolutionary Acquisition Optimization
 
 _CSCI 5980 Final Project (University of Minnesota, Spring 2026)_
 
 _Special Topics: AI for Sequential Decision Making with Prof. Aryan Deshwal_
 
-Drew Gjerstad and Pranshu Panda
+Pranshu Panda and Drew Gjerstad
 
 ## Contents
  * [Project Execution Instructions](#project-execution-instructions)
