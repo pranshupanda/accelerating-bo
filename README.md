@@ -48,6 +48,11 @@ Once again, followed by
 # This will fetch your results from the CSV created and produce the graph with values detailed in Table 1 of the report
 python3 graph5.py
 ```
+To view an illustrative example of the working of the CHM algorithm, please run the following command.
+```bash
+# This will generate a matplotlib window with mutations for a simple 10-dim sequence
+python3 chm_algorithm.py
+```
 
 ## Introduction
 
