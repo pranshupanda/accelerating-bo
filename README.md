@@ -55,8 +55,12 @@ reproduce the associated results. At UMN, if you do use MSI, then train.sh will 
     ```
 5. To view an illustrative example of the working of the CHM algorithm, please run the following command.
     ```bash
-    # This will generate a matplotlib window with mutations for a simple 10-dim sequence
+    # This will generate an image within plots containing the evolution of the sequence
     python3 chm_algorithm.py
+    ```
+6. If you choose to run on MSI at UMN, then after activating the environment, you may run the following command after updating train.sh with your details and specifications for GPU requirements. 
+    ```bash
+        sbatch train.sh
     ```
 
 ## Introduction
