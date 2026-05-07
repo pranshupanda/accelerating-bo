@@ -1,3 +1,7 @@
+"""
+This module contains the entire script for running a Bayesian Optimization experiment on the LABS problem with 4 different acquisition function optimizers (Firefly, BCA, PSO, Local Search).
+"""
+
 import time
 import csv
 import torch

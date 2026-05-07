@@ -6,6 +6,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import random
+import os
+
+os.makedirs("plots", exist_ok=True)
 
 
 def chm(x, r):
@@ -66,7 +69,7 @@ def plot_chm(x, r, steps):
     plt.xlabel('Index')
     plt.ylabel('Step')
     plt.title('CHM Evolution')
-    plt.savefig("chm_evolution.png", dpi=300, bbox_inches='tight')
+    plt.savefig("plots/chm_evolution.png", dpi=300, bbox_inches='tight')
     plt.close()
 
 

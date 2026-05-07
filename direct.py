@@ -1,13 +1,21 @@
+"""
+This module contains the entire script for running direct optimization on the LABS problem with 3 different optimizers (Firefly, BCA, PSO).
+"""
+
+
 import torch
 import numpy as np
 from time import time
 import matplotlib.pyplot as plt
+import os 
+
+os.makedirs("plots", exist_ok=True)
 
 CONFIG = {
     "dims": [10, 20, 30, 40, 50, 60],
-    "n_trials": 15,
-    "max_iters": 100,
-    "seed_offset": 43,
+    "n_trials": 10,
+    "max_iters": 10000,
+    "seed_offset": 42,
 
     "BCA": {
         "r": 0.95,
@@ -198,7 +206,7 @@ def summarize_results(results, dims):
         plt.title(f"Dimension {d}: Best Value ± Std")
         plt.ylabel("Best Value")
         plt.legend()
-        plt.show()
+        plt.savefig("plots/direct_std_best_vs_dimension.png", dpi=300, bbox_inches='tight')
 
     for d in dims:
         data = [all_vals[d][a] for a in algos]
@@ -208,7 +216,7 @@ def summarize_results(results, dims):
         plt.title(f"Dimension {d}: Distribution of Best Values")
         plt.ylabel("Best Value")
         plt.legend()
-        plt.show()
+        plt.savefig("plots/direct_dist_best_vs_dimension.png", dpi=300, bbox_inches='tight')
 
     means_by_algo = {a: [] for a in algos}
     stds_by_algo = {a: [] for a in algos}
@@ -225,7 +233,7 @@ def summarize_results(results, dims):
     plt.ylabel("Best Value")
     plt.title("Algorithm Performance vs Dimension")
     plt.legend()
-    plt.show()
+    plt.savefig("plots/direct_performance_vs_dimension.png", dpi=300, bbox_inches='tight')
 
 if __name__ == "__main__":
     start = time()
