@@ -18,36 +18,51 @@ Pranshu Panda and Drew Gjerstad
 Please note: Direct Optimization (direct.py) and Bayesian Optimization (batch64.py) runs were conducted on Minnesota Supercomputing Institute (MSI) GPUs and we recommend you use GPU resources to 
 reproduce the associated results. At UMN, if you do use MSI, then train.sh will allow you to schedule a job with the correct configuration. All code in PyTorch has been written to be GPU (cuda) optimized. 
 
-First, create a Conda environment using the following command.
-```bash
-# create conda environment
-conda env create -f environment.yml
-```
-Activate your environment using the following command.  
-```bash
-conda activate gpuenv
-```
-To reproduce Bayesian Optimization on LABS for Discrete Local Search, BCA, Firefly and Particle Swarm Optimization run the following command. 
-```bash
-# This will likely take close to ~16 hours to populate the CSV 
-python3 batch64.py
-```
-Followed by 
-```bash
-# This will fetch your results from the CSV created and produce the graph with values detailed in Table 2 of the report
-python3 graph5.py
-```
+1. Clone the repository
+    ```bash
+    git clone https://github.com/pranshupanda/accelerating-bo.git
+    cd accelerating-bo
+    ```
+2. We highly recommend that you create and activate a virtual environment. We have provided an environment.yml file to install all necessary packages, which may be invoked with the following command. 
+    ```bash
+    # create conda environment
+    conda env create -f environment.yml
+    ```
+    Activate your environment using the following command.  
+    ```bash
+    conda activate gpuenv
+    ```
 
-To reproduce Direct Optimization on LABS for BCA, Firefly and Particle Swarm Optimization run the following command. 
-```bash
-# This will likely take close to ~16 hours to populate the CSV 
-python3 direct.py
-```
-Once again, followed by 
-```bash
-# This will fetch your results from the CSV created and produce the graph with values detailed in Table 1 of the report
-python3 graph5.py
-```
+   To ensure full reproducibility of our results, the exact package versions used in the experiments are listed in environment.yml. If these versions are not compatible with your system, you may need to install or downgrade to versions that are supported by your machine.
+   
+3. To reproduce Bayesian Optimization on LABS for Discrete Local Search, BCA, Firefly and Particle Swarm Optimization run the following command. 
+     ```bash
+     # This will likely take close to ~16 hours to populate the CSV and print a version of Table 2 from the report to your terminal window after completion.
+     # Note: The formatting will be slightly different with labels like BCA-10 implying 10 dimensional LABS problem with BCA optimizer
+     python3 batch64.py
+     ```
+   Optionally, if you prefer a graph to illustrate the differences please run the following command. 
+    ```bash
+    # This will fetch your results from the CSV created and produce the graph with values detailed in Table 2 of the report
+    # This can only be done once the results CSV file is populated post-BO. 
+    python3 graph5.py
+    ```
+
+4. To reproduce Direct Optimization on LABS for BCA, Firefly and Particle Swarm Optimization run the following command. 
+    ```bash
+    # This will likely take close to ~16 hours to populate the CSV 
+    python3 direct.py
+    ```
+    Once again, followed by 
+    ```bash
+    # This will fetch your results from the CSV created and produce the graph with values detailed in Table 1 of the report
+    python3 graph5.py
+    ```
+5. To view an illustrative example of the working of the CHM algorithm, please run the following command.
+    ```bash
+    # This will generate a matplotlib window with mutations for a simple 10-dim sequence
+    python3 chm_algorithm.py
+    ```
 
 ## Introduction
 
