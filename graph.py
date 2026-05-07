@@ -1,5 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
+
+os.makedirs("plots", exist_ok=True)
 
 df = pd.read_csv("bo_results_checkpoint.csv")
 
@@ -23,7 +26,7 @@ linestyles = {
 # ---------- Plot 1: Mean Best vs Dimension ----------
 plt.figure(figsize=(10, 6))
 for opt in df["Optimizer"].unique():
-    for kernel in ["Default", "Categorical"]:
+    for kernel in ["Categorical"]:
         sub = df[(df["Optimizer"] == opt) & (df["Kernel"] == kernel)]
         plt.plot(
             sub["Dim"], sub["MeanBest"],
@@ -63,13 +66,13 @@ plt.ylabel("Mean Best Value")
 plt.legend()
 plt.grid(True, linestyle="--", alpha=0.6)
 plt.tight_layout()
-plt.show()
-
+plt.savefig("plots/bo_mean_best_vs_dimension.png", dpi=300, bbox_inches='tight')
+plt.close()
 
 # ---------- Plot 2: Runtime vs Dimension ----------
 plt.figure(figsize=(10, 6))
 for opt in df["Optimizer"].unique():
-    for kernel in ["Default", "Categorical"]:
+    for kernel in ["Categorical"]:
         sub = df[(df["Optimizer"] == opt) & (df["Kernel"] == kernel)]
         plt.plot(
             sub["Dim"], sub["Runtime"],
@@ -84,4 +87,5 @@ plt.ylabel("Runtime (s)")
 plt.legend()
 plt.grid(True, linestyle="--", alpha=0.6)
 plt.tight_layout()
-plt.show()
+plt.savefig("plots/bo_runtime_vs_dimension.png", dpi=300, bbox_inches='tight')
+plt.close()
