@@ -14,17 +14,18 @@ Pranshu Panda and Drew Gjerstad
  * [Deliverables](#deliverables)
 
 ## Project Execution Instructions
+
+Please note: Direct Optimization (direct.py) and Bayesian Optimization (batch64.py) runs were conducted on Minnesota Supercomputing Institute (MSI) GPUs and we recommend you use GPU resources to 
+reproduce the associated results. At UMN, if you do use MSI, then train.sh will allow you to schedule a job with the correct configuration. All code in PyTorch has been written to be GPU (cuda) optimized. 
+
 First, create a Conda environment using the following command.
 ```bash
 # create conda environment
 conda env create -f environment.yml
 ```
-Then, use the following commands to install `skydiscover`.
+Activate your environment using the following command.  
 ```bash
-# install skydiscover (editable mode)
-conda activate protein-design-env
-cd src/skydiscover
-python -m pip install -e .
+conda activate gpuenv
 ```
 
 ## Introduction
