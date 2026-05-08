@@ -33,32 +33,34 @@ reproduce the associated results. At UMN, if you do use MSI, then train.sh will 
     conda activate gpuenv
     ```
 
-   To ensure full reproducibility of our results, the exact package versions used in the experiments are listed in environment.yml. If these versions are not compatible with your system, you may need to install or downgrade to versions that are supported by your machine.
+   To ensure full reproducibility of our results, the exact package versions used in the experiments are listed in environment.yml. If these versions are not compatible with your system, you may need to install or downgrade to versions that are supported by your machine. All plots will be saved in the plots folder. 
    
-3. To reproduce Bayesian Optimization on LABS for Discrete Local Search, BCA, Firefly and Particle Swarm Optimization run the following command. 
-     ```bash
-     # This will likely take close to ~16 hours to populate the CSV and print a version of Table 2 from the report to your terminal window after completion.
-     # Note: The formatting will be slightly different with labels like BCA-10 implying 10 dimensional LABS problem with BCA optimizer instead of the BEST<dim> format in the paper. 
+3. To reproduce Bayesian Optimization on LABS for Discrete Local Search, BCA, Firefly and Particle Swarm Optimization run the following command. ETA: ~24 hours
+     ```bash 
      python3 batch64.py
      ```
-   Optionally, if you prefer a graph to illustrate the differences please run the following command. 
+   Optionally, if you prefer a graph to illustrate the differences please run the following command. Please note, this will fetch your results from the CSV created and produce the graph
+   with values detailed in Table 2 of the report, and store them, but can only be done once the results CSV file is populated post-BO. 
     ```bash
-    # This will fetch your results from the CSV created and produce the graph with values detailed in Table 2 of the report, and store them in folder plots
-    # This can only be done once the results CSV file is populated post-BO. 
     python3 graph.py
     ```
 
 4. To reproduce Direct Optimization on LABS for BCA, Firefly and Particle Swarm Optimization run the following command. 
+   This will likely take close to ~8.5 hours to populate the CSV 
     ```bash
-    # This will likely take close to ~8.5 hours to populate the CSV 
     python3 direct.py
     ```
-5. To view an illustrative example of the working of the CHM algorithm, please run the following command.
+5. To reproduce kernel evaluation please run the following command, which offers the following CLI flags: `--kernel {rbf,categorical} --n INT --train-size INT --test-size INT.
+    ```bash
+     python3 kernel.py
+    ```
+6. To view an illustrative example of the working of the CHM algorithm, please run the following command.
     ```bash
     # This will generate an image within plots containing the evolution of the sequence
     python3 chm_algorithm.py
     ```
-6. If you choose to run on MSI at UMN, then after activating the environment, you may run the following command after updating train.sh with your details and specifications for GPU requirements. 
+7. If you choose to run on MSI at UMN, then after activating the environment, you may run the following command after updating train.sh with your details and specifications for GPU requirements and
+   update filename to reflect what you'd like to run. 
     ```bash
         sbatch train.sh
     ```
