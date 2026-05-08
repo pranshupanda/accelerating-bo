@@ -75,6 +75,37 @@ Our goal for sample-efficient protein design will place the Bayesian optimizatio
 
 ## Related Work
 
+[1] Maximilian Balandat, Brian Karrer, Daniel R. Jiang, Samuel Daulton, Benjamin Letham, An-
+drew Gordon Wilson, and Eytan Bakshy. BoTorch: A Framework for Efficient Monte-Carlo
+Bayesian Optimization. In Advances in Neural Information Processing Systems 33, 2020. URL
+http://arxiv.org/abs/1910.06403.
+
+[2] Dogan Corus, Pietro S. Oliveto, and Donya Yazdani. Fast contiguous somatic hypermutations for single-
+objective optimisation and multi-objective optimisation via decomposition. Proceedings of the AAAI
+Conference on Artificial Intelligence, 39:26922–26930, 2025. doi: 10.1609/aaai.v39i25.34897. URL
+https://doi.org/10.1609/aaai.v39i25.34897.
+
+[3] Thomas Jansen and Christine Zarges. Analyzing different variants of immune inspired somatic con-
+tiguous hypermutations. Theoretical Computer Science, 412(6):517–533, 2011. ISSN 0304-3975.
+doi: https://doi.org/10.1016/j.tcs.2010.09.027. URL https://www.sciencedirect.com/science/
+article/pii/S0304397510005062. Theoretical Aspects of Artificial Immune Systems.
+
+[4] Johnny Kelsey and Jon Timmis. Immune inspired somatic contiguous hypermutation for function
+optimisation. In Genetic and Evolutionary Computation — GECCO 2003, pages 207–218, Berlin,
+Heidelberg, 2003. Springer Berlin Heidelberg.
+
+[5] J. Kennedy and R. Eberhart. Particle swarm optimization. In Proceedings of ICNN’95 - International
+Conference on Neural Networks, volume 4, pages 1942–1948 vol.4, 1995. doi: 10.1109/ICNN.1995.
+488968.
+
+[6] Tom Packebusch and Stephan Mertens. Low autocorrelation binary sequences. Journal of Physics A:
+Mathematical and Theoretical, 49(16):165001, March 2016. ISSN 1751-8121. doi: 10.1088/1751-8113/
+49/16/165001. URL http://dx.doi.org/10.1088/1751-8113/49/16/165001.
+
+[7] Xin-She Yang. Firefly algorithms for multimodal optimization, 2010. URL https://arxiv.org/
+abs/1003.1466.
+
+
 ## Results
 
 ## Deliverables
